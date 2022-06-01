@@ -2,7 +2,7 @@ FROM nginx
 EXPOSE 80
 RUN apt-get update -y && \
   apt-get upgrade -y && \
-  apt-get install inetutils-ping && \
+  apt-get install inetutils-ping -y && \
   apt-get install -y curl && \
   cd /tmp && \
   apt-get install awscli -y && \

@@ -1,4 +1,4 @@
-name: Docker Image push to ecr
+name: Cats and Dogs Docker Images push to ecr
 
 on:
   push:
@@ -25,12 +25,22 @@ jobs:
         AWS_SESSION_TOKEN: ${{ secrets.AWS_SESSION_TOKEN }}
         AWS_REGION: us-east-1
       
-    - name: Build the Docker image
+    - name: Build the Cats Docker image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: docker_ecr
         IMAGE_TAG: cats
       run: |
         cd cats/
+        docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+        
+    - name: Build the Dogs Docker image
+      env:
+        ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+        ECR_REPOSITORY: docker_ecr
+        IMAGE_TAG: dogs
+      run: |
+        cd dogs/
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG

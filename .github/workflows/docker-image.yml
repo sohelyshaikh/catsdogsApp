@@ -2,7 +2,7 @@ name: Cats and Dogs Docker Images push to ecr
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, dev ]
 
 
 jobs:

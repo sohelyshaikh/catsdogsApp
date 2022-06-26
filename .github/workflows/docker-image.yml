@@ -27,7 +27,7 @@ jobs:
     - name: Build the Cats Docker image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: docker_ecr
+        ECR_REPOSITORY: ecr_cats
         IMAGE_TAG: catsv1
       run: |
         cd cats/

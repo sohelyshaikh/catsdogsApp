@@ -1,1 +1,1 @@
-# catsdogs-cloud9
+# Sample web application for testing
